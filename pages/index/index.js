@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    title:'李川',
+    motto: 'Hello World, This is Lichuan',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -44,5 +45,15 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onShow(){
+    const logs = wx.getStorageSync('logs') || []
+    logs.push([Date.now(),'index onShow'])
+    wx.setStorageSync('logs', logs)
+  },
+  onHide(){
+    const logs = wx.getStorageSync('logs') || []
+    logs.push([Date.now(),'index onHide'])
+    wx.setStorageSync('logs', logs)
   }
 })
