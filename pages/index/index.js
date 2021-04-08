@@ -19,6 +19,7 @@ Page({
     })
   },
   onLoad() {
+    console.log('onLoad of index.js')
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -47,13 +48,15 @@ Page({
     })
   },
   onShow(){
+    console.log('onShow of index.js')
     const logs = wx.getStorageSync('logs') || []
     logs.push([Date.now(),'index onShow'])
     wx.setStorageSync('logs', logs)
   },
   onHide(){
-    const logs = wx.getStorageSync('logs') || []
-    logs.push([Date.now(),'index onHide'])
-    wx.setStorageSync('logs', logs)
+    if (!app.userInfo){
+      console.log('app.userInfo is null.')
+    }     
+    console.log('onHide of index.js. app.userInfo=' + app.userInfo)
   }
 })
