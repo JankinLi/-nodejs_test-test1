@@ -1,4 +1,6 @@
 // app.js
+const misc = require("utils/misc.js")
+
 App({
   onLaunch() {
     
@@ -15,8 +17,11 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res.code)
-        this.userInfo = res.code
+        if (res.code){
+          console.log(res.code)
+          this.userInfo = res.code
+          //misc.receive_openid(res.code)
+        }
       }
     })
   },
